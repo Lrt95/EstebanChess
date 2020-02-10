@@ -53,7 +53,22 @@ public class ChessModel implements IChess {
 
     @Override
     public int getNbRemainingPieces(ChessColor color) {
-        return 0;
+
+        int nbrPiecesColor=0;
+
+        for(int i=0; i<BOARD_HEIGHT ;i++ ){
+            for(int j =0; j<BOARD_WIDTH; j++){
+                try{
+                if (chessBoard.getChessBoard()[i][j].getPieceColor()==color){
+                    nbrPiecesColor ++;
+                }}
+                catch (NullPointerException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return nbrPiecesColor;
     }
 
     @Override
