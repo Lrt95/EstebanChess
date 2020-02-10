@@ -2,7 +2,9 @@
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/launcher/ChessFontManager.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/launcher/ChessGameController.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/interf/OutOfBoardException.java
+/Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/Board.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/launcher/MainLauncher.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/ChessModel.java
+/Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/Piece.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/interf/IChess.java
