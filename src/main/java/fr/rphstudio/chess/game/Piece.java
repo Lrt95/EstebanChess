@@ -12,7 +12,22 @@ public class Piece {
     public Piece(IChess.ChessColor pieceColor, IChess.ChessType pieceType) {
         this.pieceColor = pieceColor;
         this.pieceType = pieceType;
-        this.move = new Bishop();
+        switch(pieceType) {
+//////            case TYP_KING: this.move = new King();
+//////            break;
+           case TYP_QUEEN: this.move = new Queen();
+           break;
+           case TYP_ROOK: this.move = new Rook();
+           break;
+           case TYP_BISHOP: this.move = new Bishop();
+           break;
+//////            case TYP_KNIGHT: this.move = new Knight();
+//////            break;
+           case TYP_PAWN: this.move = new Pawn();
+           break;
+           default: this.move= new Pawn();
+           break;
+        }
     }
 
     public IChess.ChessColor getPieceColor() {

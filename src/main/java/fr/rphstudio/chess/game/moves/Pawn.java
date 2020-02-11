@@ -34,23 +34,20 @@ public class Pawn implements IMove  {
 
                 }
                 if (board.getPieces(getPosition(position.x+1, position.y-1)).getPieceColor() == IChess.ChessColor.CLR_BLACK) {
-                    positionPossible.add(new IChess.ChessPosition(position.x+1, position.y - 1));
+                   positionPossible.add(new IChess.ChessPosition(position.x+1, position.y - 1));
                 }
                 if (board.getPieces(getPosition(position.x-1, position.y-1)).getPieceColor() == IChess.ChessColor.CLR_BLACK) {
-                    positionPossible.add(new IChess.ChessPosition(position.x-1, position.y - 1));
+                   positionPossible.add(new IChess.ChessPosition(position.x-1, position.y - 1));
                 }
 
             }
             else if  (board.getPieces(p).getPieceColor() == IChess.ChessColor.CLR_BLACK) {
                 p.y = p.y+1;
-
-
                 if (board.getPieces(p)== null) {
+                    positionPossible.add(new IChess.ChessPosition(position.x, position.y + 1));
                     if (position.y == IChess.BOARD_POS_Y_BLACK_PAWNS && board.getPieces(destinationFinalBlack) == null) {
                         positionPossible.add(new IChess.ChessPosition(position.x, position.y + 2));
-
                     }
-                    positionPossible.add(new IChess.ChessPosition(position.x, position.y + 1));
                 }
                 if (board.getPieces(getPosition(position.x+1, position.y+1)).getPieceColor() == IChess.ChessColor.CLR_WHITE) {
                     positionPossible.add(new IChess.ChessPosition(position.x+1, position.y + 1));
@@ -60,7 +57,7 @@ public class Pawn implements IMove  {
                 }
             }
 
-        } catch (OutOfBoardException e) {
+        } catch (OutOfBoardException | NullPointerException e) {
             e.printStackTrace();
         }
 
