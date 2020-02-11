@@ -14,6 +14,7 @@ public class ChessModel implements IChess {
     private static ChessModel instance;
     private static Board chessBoard = new Board();
 
+
     private ChessModel(){
     }
 
@@ -33,21 +34,21 @@ public class ChessModel implements IChess {
 
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        if(chessBoard.getChessBoard()[p.y][p.x]==null){
+        if(chessBoard.getPieces(p)==null){
             throw new EmptyCellException();
         }
         else {
-            return chessBoard.getChessBoard()[p.y][p.x].getPieceType();
+            return chessBoard.getPieces(p).getPieceType();
         }
     }
 
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        if(chessBoard.getChessBoard()[p.y][p.x]==null){
+        if(chessBoard.getPieces(p)==null){
             throw new EmptyCellException();
         }
         else {
-            return chessBoard.getChessBoard()[p.y][p.x].getPieceColor();
+            return chessBoard.getPieces(p).getPieceColor();
         }
     }
 
@@ -55,14 +56,15 @@ public class ChessModel implements IChess {
     public int getNbRemainingPieces(ChessColor color) {
 
         int nbrPiecesColor=0;
-
+        ChessPosition p = new ChessPosition();
         for(int i=0; i<BOARD_HEIGHT ;i++ ){
             for(int j =0; j<BOARD_WIDTH; j++){
+                p.y = i; p.x = j;
                 try{
-                if (chessBoard.getChessBoard()[i][j].getPieceColor()==color){
+                if (chessBoard.getPieces(p).getPieceColor()==color){
                     nbrPiecesColor ++;
                 }}
-                catch (NullPointerException e){
+                catch (NullPointerException | OutOfBoardException e){
                     e.printStackTrace();
                 }
             }
@@ -73,6 +75,12 @@ public class ChessModel implements IChess {
 
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
+
+        try {
+            return chessBoard.getPieces(p).getMove().getPieceMoves(p,chessBoard);
+        } catch (OutOfBoardException e) {
+            e.printStackTrace();
+        }
         return new ArrayList<>();
     }
 
