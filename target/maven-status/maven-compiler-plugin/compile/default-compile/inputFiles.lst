@@ -10,6 +10,8 @@
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/game/moves/IMove.java
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/game/ChessModel.java
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/game/moves/Bishop.java
+/Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/game/moves/King.java
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/interf/ChessException.java
+/Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/game/moves/Knight.java
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/interf/OutOfBoardException.java
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/launcher/ChessGameController.java
