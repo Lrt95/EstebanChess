@@ -57,10 +57,8 @@ public class Pawn implements IMove  {
                 }
                  if (board.getPieces(getPosition(position.x-1, position.y+1)).getPieceColor() == IChess.ChessColor.CLR_WHITE) {
                     positionPossible.add(new IChess.ChessPosition(position.x-1, position.y + 1));
-
                 }
-
-                }
+            }
 
         } catch (OutOfBoardException e) {
             e.printStackTrace();
