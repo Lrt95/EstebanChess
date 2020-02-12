@@ -8,12 +8,12 @@ public class Piece {
     private IChess.ChessColor pieceColor;
     private IChess.ChessType pieceType;
     private IMove move;
-    private boolean firstMove;
+    private int counterMove;
 
     public Piece(IChess.ChessColor pieceColor, IChess.ChessType pieceType) {
         this.pieceColor = pieceColor;
         this.pieceType = pieceType;
-        this.firstMove = true;
+        this.counterMove = 0;
         switch(pieceType) {
             case TYP_KING: this.move = new King();
             break;
@@ -46,12 +46,12 @@ public class Piece {
         this.pieceType = pieceType;
     }
 
-    public boolean isFirstMove() {
-        return firstMove;
+    public int getCounterMove() {
+        return counterMove;
     }
 
-    public void setFirstMoveFalse() {
-        this.firstMove = false;
+    public void setCounterMove(int nbMove) {
+        this.counterMove = this.counterMove + nbMove;
     }
 
     public IMove getMove() {

@@ -45,7 +45,7 @@ public class King implements IMove {
                 pTour2.x = 7;
                 pTour2.y = 7;
             }
-            if((board.getPieces(pTour1).getPieceType() == IChess.ChessType.TYP_ROOK && board.getPieces(pTour1).isFirstMove())){
+            if((board.getPieces(pTour1).getPieceType() == IChess.ChessType.TYP_ROOK && board.getPieces(pTour1).getCounterMove() == 0)){
                 for(int i = 1; i < position.x; i++) {
                     if (board.getPieces(new IChess.ChessPosition(i,position.y)) == null) {
                         bigRoquePossible++;
@@ -55,7 +55,7 @@ public class King implements IMove {
                     positionPossible.add(new IChess.ChessPosition(position.x - 3, position.y));
                 }
             }
-            if((board.getPieces(pTour2).getPieceType() == IChess.ChessType.TYP_ROOK && board.getPieces(pTour2).isFirstMove())){
+            if((board.getPieces(pTour2).getPieceType() == IChess.ChessType.TYP_ROOK && board.getPieces(pTour2).getCounterMove() == 0)){
                 for(int i = position.x + 1; i < pTour2.x; i++) {
                     if (board.getPieces(new IChess.ChessPosition(i,position.y)) == null) {
                         smallRoquePossible++;
