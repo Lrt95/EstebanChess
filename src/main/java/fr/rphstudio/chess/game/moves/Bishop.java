@@ -71,6 +71,7 @@ public class Bishop implements IMove {
     }
 
 
+
     private IChess.ChessPosition getPosition(int x, int y) {
         return  new IChess.ChessPosition(x, y);
     }
