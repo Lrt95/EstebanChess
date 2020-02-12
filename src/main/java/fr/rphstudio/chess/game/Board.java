@@ -3,12 +3,13 @@ package fr.rphstudio.chess.game;
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.OutOfBoardException;
 
+import java.util.ArrayList;
+
 public class Board {
 
     private Piece[][] chessBoard = new Piece[8][8];
 
     public Board() {
-
         for (int i=0; i<8; i++){
             chessBoard[IChess.BOARD_POS_Y_WHITE_PAWNS][i]=(new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_PAWN));
             chessBoard[IChess.BOARD_POS_Y_BLACK_PAWNS][i]=(new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_PAWN));
@@ -31,6 +32,7 @@ public class Board {
         chessBoard[IChess.BOARD_POS_Y_BLACK_PIECES][IChess.BOARD_POS_X_QUEENSIDE_BISHOP]=(new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_BISHOP));
         chessBoard[IChess.BOARD_POS_Y_BLACK_PIECES][IChess.BOARD_POS_X_QUEENSIDE_KNIGHT]=(new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_KNIGHT));
         chessBoard[IChess.BOARD_POS_Y_BLACK_PIECES][IChess.BOARD_POS_X_QUEENSIDE_ROOK]=(new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_ROOK));
+
     }
 
     public Piece getPieces(IChess.ChessPosition p) throws OutOfBoardException {
@@ -38,8 +40,8 @@ public class Board {
             throw new OutOfBoardException();
         }
         return chessBoard[p.y][p.x];
-
     }
+
     public void setPiece(Piece piece, IChess.ChessPosition pos) {
         chessBoard[pos.y][pos.x] = piece;
     }

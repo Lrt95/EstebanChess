@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface IMove {
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition position, Board board);
+   // public List<IChess.ChessPosition> getRemovedPieces(IChess.ChessPosition position, Board board);
 
 }

@@ -56,4 +56,6 @@ public class Piece {
     public IMove getMove() {
         return move;
     }
+
+
 }
