@@ -1,6 +1,7 @@
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/game/moves/Queen.java
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/launcher/MainLauncher.java
+/Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/game/LastMove.java
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/game/moves/Pawn.java
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/game/Piece.java
 /Users/antony/Documents/Java/EstebanChess/src/main/java/fr/rphstudio/chess/game/Board.java

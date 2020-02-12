@@ -28,23 +28,18 @@ public class Pawn implements IMove  {
                dY = 1;
            }
 
-        for (int dX = -1; dX <= 1; dX++) {
-            IChess.ChessPosition pCheck = new IChess.ChessPosition(position.x + dX, position.y + dY);
-            if (dX == 0 && board.getPieces(pCheck) == null) {
+        for (int pX = Math.max(position.x-1, 0) ; pX <= Math.min(position.x+1, 7); pX++) {
+            IChess.ChessPosition pCheck = new IChess.ChessPosition(pX, position.y+dY);
+            if (Math.abs(pX-position.x) == 0 && board.getPieces(pCheck) == null) {
                 positionPossible.add(pCheck);
                 IChess.ChessPosition pFirstMove = new IChess.ChessPosition(position.x, position.y + dY * 2);
-                if(board.getPieces(position).getPieceColor() == IChess.ChessColor.CLR_WHITE && position.y == IChess.BOARD_POS_Y_WHITE_PAWNS) {
-                    if(board.getPieces(pFirstMove) == null) {
-                        positionPossible.add(pFirstMove);
-                    }
-                }
-               else if(board.getPieces(position).getPieceColor() == IChess.ChessColor.CLR_BLACK && position.y == IChess.BOARD_POS_Y_BLACK_PAWNS) {
+                if(board.getPieces(position).isFirstMove()==true){
                     if(board.getPieces(pFirstMove) == null) {
                         positionPossible.add(pFirstMove);
                     }
                 }
             }
-            else if(dX == 1 || dX == -1) {
+            else if(Math.abs(pX-position.x) == 1) {
                 if (board.getPieces(pCheck) != null) {
                     if(board.getPieces(pCheck).getPieceColor() != board.getPieces(position).getPieceColor()) {
                         positionPossible.add(pCheck);
