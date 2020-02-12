@@ -86,7 +86,13 @@ public class ChessModel implements IChess {
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
+        try {
+            this.chessBoard.setChessBoard(this.chessBoard.getPieces(p0), p1);
+            this.chessBoard.setChessBoard(null, p0);
 
+        } catch (OutOfBoardException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -40,4 +40,8 @@ public class Board {
         return chessBoard[p.y][p.x];
 
     }
+
+    public void setChessBoard(Piece piece, IChess.ChessPosition pos) {
+        chessBoard[pos.y][pos.x] = piece;
+    }
 }
