@@ -86,7 +86,7 @@ public class ChessModel implements IChess {
     public void movePiece(ChessPosition p0, ChessPosition p1) {
 
         try {
-           /* if (this.chessBoard.getPieces(p0).getPieceType() == ChessType.TYP_KING && this.chessBoard.getPieces(p0).isFirstMove() && (p1.x == 1 || p1.x == 6)) {
+            if (this.chessBoard.getPieces(p0).getPieceType() == ChessType.TYP_KING && (this.chessBoard.getPieces(p0).isFirstMove() && this.chessBoard.getPieces(new ChessPosition(0, p0.y)).isFirstMove() ||  this.chessBoard.getPieces(p0).isFirstMove() && this.chessBoard.getPieces(new ChessPosition(7, p0.y)).isFirstMove())  && (p1.x == 1 || p1.x == 6)) {
                if (p1.x == 1) {
                     this.chessBoard.getPieces(p0).setFirstMoveFalse();
                     this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
@@ -100,21 +100,21 @@ public class ChessModel implements IChess {
                     this.chessBoard.setPiece(this.chessBoard.getPieces((new ChessPosition(7, p0.y))), (new ChessPosition(5, p0.y)));
                     this.chessBoard.setPiece(null, (new ChessPosition(7, p0.y)));
                 }
-            } else {*/
-                    this.chessBoard.getPieces(p0).setFirstMoveFalse();
-                    this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
-                    this.chessBoard.setPiece(null, p0);
-                    if (p1.y == 0) {
-                        if (this.chessBoard.getPieces(p1).getPieceType() == ChessType.TYP_PAWN && this.chessBoard.getPieces(p1).getPieceColor() == ChessColor.CLR_WHITE) {
-                            this.chessBoard.getPieces(p1).setPieceType(ChessType.TYP_QUEEN);
-                        }
-                    } else if (p1.y == 7) {
-                        if (this.chessBoard.getPieces(p1).getPieceType() == ChessType.TYP_PAWN && this.chessBoard.getPieces(p1).getPieceColor() == ChessColor.CLR_BLACK) {
-                            this.chessBoard.getPieces(p1).setPieceType(ChessType.TYP_QUEEN);
-                        }
+            } else {
+                this.chessBoard.getPieces(p0).setFirstMoveFalse();
+                this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
+                this.chessBoard.setPiece(null, p0);
+                if (p1.y == 0) {
+                    if (this.chessBoard.getPieces(p1).getPieceType() == ChessType.TYP_PAWN && this.chessBoard.getPieces(p1).getPieceColor() == ChessColor.CLR_WHITE) {
+                        this.chessBoard.getPieces(p1).setPieceType(ChessType.TYP_QUEEN);
                     }
-
-        } catch (OutOfBoardException e) {
+                } else if (p1.y == 7) {
+                    if (this.chessBoard.getPieces(p1).getPieceType() == ChessType.TYP_PAWN && this.chessBoard.getPieces(p1).getPieceColor() == ChessColor.CLR_BLACK) {
+                        this.chessBoard.getPieces(p1).setPieceType(ChessType.TYP_QUEEN);
+                    }
+                }
+            }
+        } catch (OutOfBoardException | NullPointerException e) {
             e.printStackTrace();
         }
     }

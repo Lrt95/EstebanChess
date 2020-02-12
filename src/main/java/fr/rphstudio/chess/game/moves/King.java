@@ -9,11 +9,11 @@ import java.util.List;
 
 public class King implements IMove {
 
-    private ArrayList<IChess.ChessPosition> positionPossible = new ArrayList();
 
 
     @Override
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition position, Board board) {
+        ArrayList<IChess.ChessPosition> positionPossible = new ArrayList();
 
         for (int i = -1; i <= 1; i++){
             for (int j = -1; j <= 1 ; j++) {
@@ -21,7 +21,7 @@ public class King implements IMove {
                     if (board.getPieces(getPosition(position.x + i, position.y + j)) == null ||
                             board.getPieces(getPosition(position.x + i, position.y + j)).getPieceColor()
                                     != board.getPieces(position).getPieceColor()) {
-                        this.positionPossible.add(new IChess.ChessPosition(position.x + i, position.y + j));
+                        positionPossible.add(new IChess.ChessPosition(position.x + i, position.y + j));
                     }
                 } catch (OutOfBoardException e) {
                     e.printStackTrace();
@@ -29,17 +29,6 @@ public class King implements IMove {
             }
         }
 
-        //getRoque(position, board);
-        return this.positionPossible;
-    }
-
-
-    private IChess.ChessPosition getPosition(int x, int y) {
-        return  new IChess.ChessPosition(x, y);
-    }
-
-
-    private void getRoque(IChess.ChessPosition position, Board board) {
         IChess.ChessPosition pTour1 = new IChess.ChessPosition();
         IChess.ChessPosition pTour2 = new IChess.ChessPosition();
         try {
@@ -63,7 +52,7 @@ public class King implements IMove {
                     }
                 }
                 if (bigRoquePossible == 3) {
-                    this.positionPossible.add(new IChess.ChessPosition(position.x - 3, position.y));
+                    positionPossible.add(new IChess.ChessPosition(position.x - 3, position.y));
                 }
             }
             if((board.getPieces(pTour2).getPieceType() == IChess.ChessType.TYP_ROOK && board.getPieces(pTour2).isFirstMove())){
@@ -73,11 +62,20 @@ public class King implements IMove {
                     }
                 }
                 if (smallRoquePossible == 2) {
-                    this.positionPossible.add(new IChess.ChessPosition(position.x + 2, pTour2.y));
+                    positionPossible.add(new IChess.ChessPosition(position.x + 2, pTour2.y));
                 }
             }
-        } catch (OutOfBoardException e) {
+        } catch (OutOfBoardException | NullPointerException e) {
             e.printStackTrace();
         }
+
+        return positionPossible;
     }
+
+
+    private IChess.ChessPosition getPosition(int x, int y) {
+        return  new IChess.ChessPosition(x, y);
+    }
+
+
 }
