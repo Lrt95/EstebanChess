@@ -1,5 +1,6 @@
 package fr.rphstudio.chess.game;
 
+import fr.rphstudio.chess.game.moves.Queen;
 import fr.rphstudio.chess.interf.EmptyCellException;
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.OutOfBoardException;
@@ -92,11 +93,11 @@ public class ChessModel implements IChess {
             this.chessBoard.setPiece(null, p0);
             if (p1.y == 0 ) {
                 if(this.chessBoard.getPieces(p1).getPieceType() == ChessType.TYP_PAWN && this.chessBoard.getPieces(p1).getPieceColor() == ChessColor.CLR_WHITE) {
-                    this.chessBoard.getPieces(p1).setPieceType(ChessType.TYP_QUEEN);
+                    this.chessBoard.setPiece(new Piece(ChessColor.CLR_WHITE, ChessType.TYP_QUEEN), p1);
                 }
             } else if (p1.y == 7) {
                 if (this.chessBoard.getPieces(p1).getPieceType() == ChessType.TYP_PAWN && this.chessBoard.getPieces(p1).getPieceColor() == ChessColor.CLR_BLACK) {
-                    this.chessBoard.getPieces(p1).setPieceType(ChessType.TYP_QUEEN);
+                    this.chessBoard.setPiece(new Piece(ChessColor.CLR_BLACK, ChessType.TYP_QUEEN), p1);
                 }
             }
         } catch (OutOfBoardException e) {

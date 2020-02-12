@@ -13,6 +13,7 @@ public class Piece {
     public Piece(IChess.ChessColor pieceColor, IChess.ChessType pieceType) {
         this.pieceColor = pieceColor;
         this.pieceType = pieceType;
+        this.firstMove=true;
         switch(pieceType) {
             case TYP_KING: this.move = new King();
             break;
