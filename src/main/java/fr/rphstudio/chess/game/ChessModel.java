@@ -5,9 +5,7 @@ import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.OutOfBoardException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class ChessModel implements IChess {
 
@@ -86,13 +84,25 @@ public class ChessModel implements IChess {
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
-        try {
-            this.chessBoard.setChessBoard(this.chessBoard.getPieces(p0), p1);
-            this.chessBoard.setChessBoard(null, p0);
 
+
+        try {
+            this.chessBoard.getPieces(p0).setFirstMoveFalse();
+            this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
+            this.chessBoard.setPiece(null, p0);
+            if (p1.y == 0 ) {
+                if(this.chessBoard.getPieces(p1).getPieceType() == ChessType.TYP_PAWN && this.chessBoard.getPieces(p1).getPieceColor() == ChessColor.CLR_WHITE) {
+                    this.chessBoard.getPieces(p1).setPieceType(ChessType.TYP_QUEEN);
+                }
+            } else if (p1.y == 7) {
+                if (this.chessBoard.getPieces(p1).getPieceType() == ChessType.TYP_PAWN && this.chessBoard.getPieces(p1).getPieceColor() == ChessColor.CLR_BLACK) {
+                    this.chessBoard.getPieces(p1).setPieceType(ChessType.TYP_QUEEN);
+                }
+            }
         } catch (OutOfBoardException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
