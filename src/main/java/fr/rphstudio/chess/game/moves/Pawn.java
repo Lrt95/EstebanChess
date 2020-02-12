@@ -32,7 +32,6 @@ public class Pawn implements IMove  {
 
         for (int pX = Math.max(position.x-1, 0) ; pX <= Math.min(position.x+1, 7); pX++) {
             IChess.ChessPosition pCheck = new IChess.ChessPosition(pX, position.y+dY);
-            //System.out.println(pX+"/"+(position.y+dY));
             if (Math.abs(pX-position.x) == 0 && board.getPieces(pCheck) == null) {
                 positionPossible.add(pCheck);
                 IChess.ChessPosition pFirstMove = new IChess.ChessPosition(position.x, position.y + dY * 2);

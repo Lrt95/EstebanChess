@@ -86,7 +86,6 @@ public class ChessModel implements IChess {
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
 
-
         try {
             this.chessBoard.getPieces(p0).setFirstMoveFalse();
             this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
@@ -103,13 +102,38 @@ public class ChessModel implements IChess {
         } catch (OutOfBoardException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
     public ChessKingState getKingState(ChessColor color) {
+
+        List<IChess.ChessPosition> warningPos = new ArrayList();
+        ChessPosition kingPosition = new ChessPosition();
+
+        for(int i=0; i<8; i++){
+            for (int j=0; j<8; j++){
+                ChessPosition p = new ChessPosition(j,i);
+                try {
+                    if(chessBoard.getPieces(p).getPieceColor() != color){
+                        warningPos.addAll(getPieceMoves(p));
+                    }
+                    else if(chessBoard.getPieces(p).getPieceType() == ChessType.TYP_KING){
+                        kingPosition=p;
+                    }
+                } catch (OutOfBoardException | NullPointerException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        for (ChessPosition pos: warningPos ) {
+            if(pos.x==kingPosition.x && pos.y==kingPosition.y){
+                return ChessKingState.KING_THREATEN;
+            }
+            System.out.println(pos.y+"/"+pos.x);
+        }
         return ChessKingState.KING_SAFE;
     }
+
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color){
