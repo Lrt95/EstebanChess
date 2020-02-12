@@ -11,6 +11,7 @@ public class ChessModel implements IChess {
 
     private static ChessModel instance;
     private Board chessBoard = new Board();
+    private LostPiece lostPiece;
 
 
     private ChessModel(){
@@ -27,7 +28,7 @@ public class ChessModel implements IChess {
     public void reinit() {
 
         chessBoard = new Board();
-
+        lostPiece = new LostPiece();
     }
 
     @Override
@@ -101,9 +102,13 @@ public class ChessModel implements IChess {
                     this.chessBoard.setPiece(null, (new ChessPosition(7, p0.y)));
                 }
             } else {
+                Piece removePiece = this.chessBoard.getPieces(p1);
                 this.chessBoard.getPieces(p0).setFirstMoveFalse();
                 this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
                 this.chessBoard.setPiece(null, p0);
+                if (removePiece != null ) {
+                    lostPiece.addType(removePiece.getPieceType(), removePiece.getPieceColor());
+                }
                 if (p1.y == 0) {
                     if (this.chessBoard.getPieces(p1).getPieceType() == ChessType.TYP_PAWN && this.chessBoard.getPieces(p1).getPieceColor() == ChessColor.CLR_WHITE) {
                         this.chessBoard.getPieces(p1).setPieceType(ChessType.TYP_QUEEN);
@@ -126,7 +131,8 @@ public class ChessModel implements IChess {
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color){
-        return new ArrayList<>();
+        return lostPiece.getList(color);
+
     }
 
     @Override

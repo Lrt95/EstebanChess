@@ -9,6 +9,7 @@ fr/rphstudio/chess/game/moves/IMove.class
 fr/rphstudio/chess/game/Piece.class
 fr/rphstudio/chess/interf/IChess$ChessType.class
 fr/rphstudio/chess/game/moves/Rook.class
+fr/rphstudio/chess/game/LostPiece.class
 fr/rphstudio/chess/interf/ChessException.class
 fr/rphstudio/chess/launcher/ChessGameController.class
 fr/rphstudio/chess/interf/OutOfBoardException.class
