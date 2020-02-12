@@ -8,6 +8,7 @@ public class Piece {
     private IChess.ChessColor pieceColor;
     private IChess.ChessType pieceType;
     private IMove move;
+    private boolean firstMove;
 
     public Piece(IChess.ChessColor pieceColor, IChess.ChessType pieceType) {
         this.pieceColor = pieceColor;
@@ -42,6 +43,14 @@ public class Piece {
 
     public void setPieceType(IChess.ChessType pieceType) {
         this.pieceType = pieceType;
+    }
+
+    public boolean isFirstMove() {
+        return firstMove;
+    }
+
+    public void setFirstMoveFalse() {
+        this.firstMove = false;
     }
 
     public IMove getMove() {
