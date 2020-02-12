@@ -1,6 +1,5 @@
 package fr.rphstudio.chess.game;
 
-import fr.rphstudio.chess.game.moves.Queen;
 import fr.rphstudio.chess.interf.EmptyCellException;
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.OutOfBoardException;
@@ -13,7 +12,6 @@ public class ChessModel implements IChess {
     private static ChessModel instance;
     private static Board chessBoard = new Board();
     private static LastMove lastMove;
-
 
     private ChessModel(){
     }
@@ -30,7 +28,6 @@ public class ChessModel implements IChess {
 
         chessBoard = new Board();
         lastMove = null;
-
     }
 
     @Override
@@ -78,12 +75,35 @@ public class ChessModel implements IChess {
 
         try {
             List<ChessPosition> positionPossible = chessBoard.getPieces(p).getMove().getPieceMoves(p,chessBoard);
-            for (ChessPosition position : positionPossible){
+            List<ChessPosition> positionPossibleSafe = new ArrayList<>();
+            ChessColor color = chessBoard.getPieces(p).getPieceColor();
 
+
+            for (ChessPosition position : positionPossible){
+                movePiece(p, position);
+                if (getKingStateForMove(color) == ChessKingState.KING_SAFE ){
+                    positionPossibleSafe.add(position);
+                }
+                undoLastMove();
             }
+            return positionPossibleSafe;
+
+
+
+        } catch (OutOfBoardException | NullPointerException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<ChessPosition> getPieceMovesCheckKingState(ChessPosition p) {
+
+        try {
+            List<ChessPosition> positionPossible = chessBoard.getPieces(p).getMove().getPieceMoves(p,chessBoard);
+
             return positionPossible;
 
-        } catch (OutOfBoardException e) {
+        } catch (OutOfBoardException | NullPointerException e) {
             e.printStackTrace();
         }
         return new ArrayList<>();
@@ -140,6 +160,33 @@ public class ChessModel implements IChess {
         return ChessKingState.KING_SAFE;
     }
 
+    public ChessKingState getKingStateForMove(ChessColor color) {
+
+        List<IChess.ChessPosition> warningPos = new ArrayList();
+        ChessPosition kingPosition = new ChessPosition();
+
+        for(int i=0; i<8; i++){
+            for (int j=0; j<8; j++){
+                ChessPosition p = new ChessPosition(j,i);
+                try {
+                    if(chessBoard.getPieces(p).getPieceColor() != color){
+                        warningPos.addAll(getPieceMovesCheckKingState(p));
+                    }
+                    else if(chessBoard.getPieces(p).getPieceType() == ChessType.TYP_KING){
+                        kingPosition=p;
+                    }
+                } catch (OutOfBoardException | NullPointerException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        for (ChessPosition pos: warningPos ) {
+            if(pos.x==kingPosition.x && pos.y==kingPosition.y){
+                return ChessKingState.KING_THREATEN;
+            }
+        }
+        return ChessKingState.KING_SAFE;
+    }
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color){
@@ -155,7 +202,6 @@ public class ChessModel implements IChess {
             lastMove = null ;
             return true;
         }
-
         return false;
     }
 
