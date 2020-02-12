@@ -10,6 +10,7 @@
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/launcher/ChessGameController.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/moves/IMove.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/Board.java
+/Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/LastMove.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/moves/Bishop.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/moves/King.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java

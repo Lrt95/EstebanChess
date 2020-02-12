@@ -21,4 +21,5 @@ fr/rphstudio/chess/game/moves/Knight.class
 fr/rphstudio/chess/interf/IChess$ChessPosition.class
 fr/rphstudio/chess/game/Piece$1.class
 fr/rphstudio/chess/game/moves/Pawn.class
+fr/rphstudio/chess/game/LastMove.class
 fr/rphstudio/chess/interf/EmptyCellException.class

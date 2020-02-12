@@ -12,6 +12,7 @@ public class ChessModel implements IChess {
 
     private static ChessModel instance;
     private static Board chessBoard = new Board();
+    private static LastMove lastMove;
 
 
     private ChessModel(){
@@ -28,6 +29,7 @@ public class ChessModel implements IChess {
     public void reinit() {
 
         chessBoard = new Board();
+        lastMove = null;
 
     }
 
@@ -68,7 +70,6 @@ public class ChessModel implements IChess {
                 }
             }
         }
-
         return nbrPiecesColor;
     }
 
@@ -76,7 +77,12 @@ public class ChessModel implements IChess {
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
 
         try {
-            return chessBoard.getPieces(p).getMove().getPieceMoves(p,chessBoard);
+            List<ChessPosition> positionPossible = chessBoard.getPieces(p).getMove().getPieceMoves(p,chessBoard);
+            for (ChessPosition position : positionPossible){
+
+            }
+            return positionPossible;
+
         } catch (OutOfBoardException e) {
             e.printStackTrace();
         }
@@ -87,6 +93,7 @@ public class ChessModel implements IChess {
     public void movePiece(ChessPosition p0, ChessPosition p1) {
 
         try {
+            lastMove = new LastMove(p0, p1, chessBoard.getPieces(p0), chessBoard.getPieces(p1)) ;
             this.chessBoard.getPieces(p0).setFirstMoveFalse();
             this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
             this.chessBoard.setPiece(null, p0);
@@ -129,7 +136,6 @@ public class ChessModel implements IChess {
             if(pos.x==kingPosition.x && pos.y==kingPosition.y){
                 return ChessKingState.KING_THREATEN;
             }
-            System.out.println(pos.y+"/"+pos.x);
         }
         return ChessKingState.KING_SAFE;
     }
@@ -142,6 +148,14 @@ public class ChessModel implements IChess {
 
     @Override
     public boolean undoLastMove() {
+
+        if (this.lastMove!=null){
+            chessBoard.setPiece(this.lastMove.getPiece1(), this.lastMove.getPosition1());
+            chessBoard.setPiece(this.lastMove.getPiece2(), this.lastMove.getPosition2());
+            lastMove = null ;
+            return true;
+        }
+
         return false;
     }
 
