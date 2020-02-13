@@ -8,6 +8,7 @@ public class Timer {
     private long timeStart = System.currentTimeMillis();
 
 
+
     public long getCurrentTime() {
         return System.currentTimeMillis() - timeStart;
     }
@@ -59,4 +60,5 @@ public class Timer {
     public void setTimerWhite(long timerWhite) {
         this.timerWhite = timerWhite;
     }
+
 }

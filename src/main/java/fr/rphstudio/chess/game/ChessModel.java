@@ -13,7 +13,8 @@ public class ChessModel implements IChess {
     private Board chessBoard = new Board();
     private LostPiece lostPiece;
     private boolean isTestPositionsPossible;
-    private Timer timer = new Timer();
+    private LastMove lastMove;
+    private static Timer timer = new Timer();
     private ArrayList<LastMove> lastMoveslist = new ArrayList<LastMove>();
 
 
@@ -32,8 +33,11 @@ public class ChessModel implements IChess {
 
         chessBoard = new Board();
         lostPiece = new LostPiece();
+
         this.lastMoveslist = new ArrayList<LastMove>();
         this.timer = new Timer();
+
+
     }
 
     @Override
@@ -116,6 +120,7 @@ public class ChessModel implements IChess {
             if (this.chessBoard.getPieces(p0).getPieceType() == ChessType.TYP_KING && (this.chessBoard.getPieces(p0).getCounterMove() == 0 && this.chessBoard.getPieces(new ChessPosition(0, p0.y)).getCounterMove() == 0 ||  this.chessBoard.getPieces(p0).getCounterMove() == 0 && this.chessBoard.getPieces(new ChessPosition(7, p0.y)).getCounterMove() == 0)  && (p1.x == 1 || p1.x == 6)) {
                 if (p1.x == 1) {
                     this.lastMoveslist.add( new LastMove(chessBoard.getPieces(p0), p0, p1, chessBoard.getPieces(new ChessPosition(0, p0.y)), (new ChessPosition(0, p0.y)), new ChessPosition(2, p0.y), this.timer.getTimerBlack(), this.timer.getTimerWhite()));
+
                     this.chessBoard.getPieces(p0).setCounterMove(1);
                     this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
                     this.chessBoard.setPiece(null, p0);
@@ -195,6 +200,7 @@ public class ChessModel implements IChess {
     public boolean undoLastMove() {
 
         if (this.lastMoveslist != null ){
+
             if(this.lastMoveslist.size()>0){
 
                 LastMove lastOne = this.lastMoveslist.get(this.lastMoveslist.size()-1);

@@ -24,6 +24,7 @@ public class LastMove {
                     IChess.ChessPosition position2P2,
                     long timeBlack,
                     long timeWhite) {
+
         this.piece1 = piece1;
         this.position1P1 = position1P1;
         this.position2P1 = position2P1;
@@ -32,8 +33,6 @@ public class LastMove {
         this.piece2 = piece2;
         this.timeBlack = timeBlack;
         this.timeWhite = timeWhite;
-
-
         this.isPieceEaten = false;
     }
 
