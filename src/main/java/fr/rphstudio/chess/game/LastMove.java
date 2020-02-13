@@ -13,14 +13,25 @@ public class LastMove {
     private IChess.ChessPosition position1P2;
     private IChess.ChessPosition position2P2;
     private boolean isPieceEaten;
+    private long timeBlack;
+    private long timeWhite;
 
-    public LastMove(Piece piece1, IChess.ChessPosition position1P1, IChess.ChessPosition position2P1,  Piece piece2,  IChess.ChessPosition position1P2, IChess.ChessPosition position2P2) {
+    public LastMove(Piece piece1,
+                    IChess.ChessPosition position1P1,
+                    IChess.ChessPosition position2P1,
+                    Piece piece2,
+                    IChess.ChessPosition position1P2,
+                    IChess.ChessPosition position2P2,
+                    long timeBlack,
+                    long timeWhite) {
         this.piece1 = piece1;
         this.position1P1 = position1P1;
         this.position2P1 = position2P1;
         this.position1P2 = position1P2;
         this.position2P2 = position2P2;
         this.piece2 = piece2;
+        this.timeBlack = timeBlack;
+        this.timeWhite = timeWhite;
 
 
         this.isPieceEaten = false;
@@ -80,5 +91,13 @@ public class LastMove {
 
     public void setPieceEaten(boolean pieceEaten) {
         isPieceEaten = pieceEaten;
+    }
+
+    public long getTimeBlack() {
+        return timeBlack;
+    }
+
+    public long getTimeWhite() {
+        return timeWhite;
     }
 }
