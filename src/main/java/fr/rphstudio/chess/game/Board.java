@@ -38,9 +38,24 @@ public class Board {
             throw new OutOfBoardException();
         }
         return chessBoard[p.y][p.x];
-
     }
+
+    public IChess.ChessPosition getKingPosition(IChess.ChessColor color){
+        IChess.ChessPosition kingPosition = new IChess.ChessPosition();
+        for(int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                if (chessBoard[y][x] != null && chessBoard[y][x].getPieceType() == IChess.ChessType.TYP_KING && chessBoard[y][x].getPieceColor() == color) {
+                    kingPosition.x = x;
+                    kingPosition.y = y;
+                }
+            }
+        }
+            return kingPosition;
+    }
+
     public void setPiece(Piece piece, IChess.ChessPosition pos) {
-        chessBoard[pos.y][pos.x] = piece;
+        if(pos.x >= 0 && pos.x <= 7 && pos.y >= 0 && pos.y <= 7 ) {
+            chessBoard[pos.y][pos.x] = piece;
+        }
     }
 }

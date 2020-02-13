@@ -17,54 +17,63 @@ public class Bishop implements IMove {
 
         try {
             checkP = getPosition(position.x - 1, position.y - 1);
-            while (board.getPieces(checkP) == null) {
-                positionPossible.add(checkP);
-                checkP = getPosition(checkP.x - 1, checkP.y - 1);
-            }
-            if (board.getPieces(checkP).getPieceColor() != board.getPieces(position).getPieceColor()) {
-                positionPossible.add(checkP);
+            if(position.x >= 0 && position.y >= 0) {
+                while (board.getPieces(checkP) == null && position.x >= 0 && position.y >= 0) {
+                    positionPossible.add(checkP);
+                    checkP = getPosition(checkP.x - 1, checkP.y - 1);
+                }
+                if (board.getPieces(checkP).getPieceColor() != board.getPieces(position).getPieceColor()) {
+                    positionPossible.add(checkP);
+                }
             }
         } catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try {
             checkP = getPosition(position.x + 1, position.y + 1);
-            while (board.getPieces(checkP) == null) {
-                positionPossible.add(checkP);
-                checkP = getPosition(checkP.x + 1, checkP.y + 1);
-            }
-            if (board.getPieces(checkP).getPieceColor() != board.getPieces(position).getPieceColor()) {
-                positionPossible.add(checkP);
+            if (position.x <= 7 && position.y <= 7) {
+                while (board.getPieces(checkP) == null && position.x <= 7 && position.y <= 7) {
+                    positionPossible.add(checkP);
+                    checkP = getPosition(checkP.x + 1, checkP.y + 1);
+                }
+                if (board.getPieces(checkP).getPieceColor() != board.getPieces(position).getPieceColor()) {
+                    positionPossible.add(checkP);
+                }
             }
         } catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try {
             checkP = getPosition(position.x + 1, position.y - 1);
-            while (board.getPieces(checkP) == null) {
-                positionPossible.add(checkP);
-                checkP = getPosition(checkP.x + 1, checkP.y - 1);
+            if (position.y >= 0 && position.x <= 7){
+                while (board.getPieces(checkP) == null && position.y >= 0 && position.x <= 7) {
+                    positionPossible.add(checkP);
+                    checkP = getPosition(checkP.x + 1, checkP.y - 1);
+                }
+                if (board.getPieces(checkP).getPieceColor() != board.getPieces(position).getPieceColor()) {
+                    positionPossible.add(checkP);
+                }
             }
-            if (board.getPieces(checkP).getPieceColor() != board.getPieces(position).getPieceColor()) {
-                positionPossible.add(checkP);
-            }
+
         } catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try {
             checkP = getPosition(position.x - 1, position.y + 1);
-            while (board.getPieces(checkP) == null) {
-                positionPossible.add(checkP);
-                checkP = getPosition(checkP.x - 1, checkP.y + 1);
-            }
-            if (board.getPieces(checkP).getPieceColor() != board.getPieces(position).getPieceColor()) {
-                positionPossible.add(checkP);
+            if (position.x >= 0 && position.y <= 7) {
+                while (board.getPieces(checkP) == null && position.x >= 0 && position.y <= 7) {
+                    positionPossible.add(checkP);
+                    checkP = getPosition(checkP.x - 1, checkP.y + 1);
+                }
+                if (board.getPieces(checkP).getPieceColor() != board.getPieces(position).getPieceColor()) {
+                    positionPossible.add(checkP);
+                }
             }
         } catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         return positionPossible;

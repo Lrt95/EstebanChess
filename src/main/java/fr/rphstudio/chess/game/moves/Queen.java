@@ -25,7 +25,7 @@ public class Queen implements IMove {
             }
         }
         catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try{
@@ -39,7 +39,7 @@ public class Queen implements IMove {
             }
         }
         catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try{
@@ -53,7 +53,7 @@ public class Queen implements IMove {
             }
         }
         catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try{
@@ -67,7 +67,7 @@ public class Queen implements IMove {
             }
         }
         catch (OutOfBoardException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         }
 
 
@@ -82,7 +82,7 @@ public class Queen implements IMove {
             }
         }
         catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try{
@@ -96,7 +96,7 @@ public class Queen implements IMove {
             }
         }
         catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try{
@@ -110,7 +110,7 @@ public class Queen implements IMove {
             }
         }
         catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try{
@@ -124,7 +124,7 @@ public class Queen implements IMove {
             }
         }
         catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         return positionPossible;
