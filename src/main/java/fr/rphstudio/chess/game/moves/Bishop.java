@@ -9,6 +9,13 @@ import java.util.List;
 
 public class Bishop implements IMove {
 
+    /**
+     * Get the possible bishop moves
+     * @param position position of the piece
+     * @param board the chessboard
+     * @return the list of all possibles positions
+     */
+
     @Override
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition position, Board board) {
 
@@ -71,6 +78,12 @@ public class Bishop implements IMove {
     }
 
 
+    /**
+     * Get the bishop position
+     * @param x
+     * @param y
+     * @return the bishop position on the chess
+     */
 
     private IChess.ChessPosition getPosition(int x, int y) {
         return  new IChess.ChessPosition(x, y);

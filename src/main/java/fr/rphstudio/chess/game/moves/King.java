@@ -10,9 +10,9 @@ import java.util.List;
 public class King implements IMove {
 
     /**
-     *
-     * @param position
-     * @param board
+     * Get the possibles king moves
+     * @param position position of the piece
+     * @param board the chessboard
      * @return the list of all possible moves for King
      */
 
@@ -78,10 +78,10 @@ public class King implements IMove {
     }
 
     /**
-     *
+     * Get the king position
      * @param x
      * @param y
-     * @return
+     * @return the king position on the board
      */
     private IChess.ChessPosition getPosition(int x, int y) {
         return  new IChess.ChessPosition(x, y);

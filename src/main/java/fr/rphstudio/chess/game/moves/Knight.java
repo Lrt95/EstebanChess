@@ -9,6 +9,13 @@ import java.util.List;
 
 public class Knight implements IMove {
 
+    /**
+     * Get the possibles knight moves
+     * @param position the position of the piece
+     * @param board the chessboard
+     * @return the list of all possibles positions
+     */
+
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition position, Board board)  {
         ArrayList<IChess.ChessPosition> positionPossible = new ArrayList();
 
@@ -29,10 +36,15 @@ public class Knight implements IMove {
 
             }
         }
-
-
     return positionPossible;
     }
+
+    /**
+     * Get the knight position
+     * @param x the x position
+     * @param y the y position
+     * @return the knight position on the chess
+     */
 
     private IChess.ChessPosition getPosition(int x, int y) {
         return  new IChess.ChessPosition(x, y);
