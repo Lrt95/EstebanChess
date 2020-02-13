@@ -27,7 +27,7 @@ public class Bishop implements IMove {
                 }
             }
         } catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try {
@@ -42,7 +42,7 @@ public class Bishop implements IMove {
                 }
             }
         } catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try {
@@ -58,7 +58,7 @@ public class Bishop implements IMove {
             }
 
         } catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try {
@@ -73,7 +73,7 @@ public class Bishop implements IMove {
                 }
             }
         } catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         return positionPossible;

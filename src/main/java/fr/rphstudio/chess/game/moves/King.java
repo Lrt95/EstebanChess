@@ -24,7 +24,7 @@ public class King implements IMove {
                         positionPossible.add(new IChess.ChessPosition(position.x + i, position.y + j));
                     }
                 } catch (OutOfBoardException e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 }
             }
         }
@@ -66,7 +66,7 @@ public class King implements IMove {
                 }
             }
         } catch (OutOfBoardException | NullPointerException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         return positionPossible;

@@ -1,6 +1,7 @@
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/moves/Rook.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/LostPiece.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/interf/OutOfBoardException.java
+/Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/Timer.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/moves/Pawn.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/launcher/MainLauncher.java
 /Users/AlyssiaPH/Documents/Cours/POO/EstebanChess/src/main/java/fr/rphstudio/chess/game/ChessModel.java

@@ -26,7 +26,7 @@ public class Rook implements IMove {
             }
         }
         catch (OutOfBoardException e) {
-        e.printStackTrace();
+        //e.printStackTrace();
         }
 
         try{
@@ -40,7 +40,7 @@ public class Rook implements IMove {
             }
         }
         catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try{
@@ -54,7 +54,7 @@ public class Rook implements IMove {
             }
         }
         catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         try{
@@ -68,7 +68,7 @@ public class Rook implements IMove {
             }
         }
             catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         return positionPossible;

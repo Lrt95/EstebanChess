@@ -23,7 +23,7 @@ public class Knight implements IMove {
                             positionPossible.add(p);
                         }
                     } catch (OutOfBoardException e) {
-                        e.printStackTrace();
+                        //e.printStackTrace();
                     }
                 }
 

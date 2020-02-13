@@ -45,7 +45,7 @@ public class Pawn implements IMove  {
         }
 
         } catch (OutOfBoardException | NullPointerException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         return positionPossible;
