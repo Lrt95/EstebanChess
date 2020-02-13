@@ -29,6 +29,7 @@ public class Piece {
         }
     }
 
+
     public IChess.ChessColor getPieceColor() {
         return this.pieceColor;
     }

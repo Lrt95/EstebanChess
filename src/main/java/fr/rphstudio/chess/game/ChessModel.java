@@ -11,13 +11,14 @@ public class ChessModel implements IChess {
 
     private static ChessModel instance;
     private static Board chessBoard = new Board();
+    private static Timer timer = new Timer();
 
 
-    private ChessModel(){
+    private ChessModel() {
     }
 
     public static IChess getInstance() {
-        if(ChessModel.instance==null){
+        if (ChessModel.instance == null) {
             ChessModel.instance = new ChessModel();
         }
         return ChessModel.instance;
@@ -32,20 +33,18 @@ public class ChessModel implements IChess {
 
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        if(chessBoard.getPieces(p)==null){
+        if (chessBoard.getPieces(p) == null) {
             throw new EmptyCellException();
-        }
-        else {
+        } else {
             return chessBoard.getPieces(p).getPieceType();
         }
     }
 
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        if(chessBoard.getPieces(p)==null){
+        if (chessBoard.getPieces(p) == null) {
             throw new EmptyCellException();
-        }
-        else {
+        } else {
             return chessBoard.getPieces(p).getPieceColor();
         }
     }
@@ -53,17 +52,18 @@ public class ChessModel implements IChess {
     @Override
     public int getNbRemainingPieces(ChessColor color) {
 
-        int nbrPiecesColor=0;
+        int nbrPiecesColor = 0;
         ChessPosition p = new ChessPosition();
-        for(int i=0; i<BOARD_HEIGHT ;i++ ){
-            for(int j =0; j<BOARD_WIDTH; j++){
-                p.y = i; p.x = j;
-                try{
-                if (chessBoard.getPieces(p).getPieceColor()==color){
-                    nbrPiecesColor ++;
-                }}
-                catch (NullPointerException | OutOfBoardException e){
-                    e.printStackTrace();
+        for (int i = 0; i < BOARD_HEIGHT; i++) {
+            for (int j = 0; j < BOARD_WIDTH; j++) {
+                p.y = i;
+                p.x = j;
+                try {
+                    if (chessBoard.getPieces(p).getPieceColor() == color) {
+                        nbrPiecesColor++;
+                    }
+                } catch (NullPointerException | OutOfBoardException e) {
+                    //e.printStackTrace();
                 }
             }
         }
@@ -75,9 +75,9 @@ public class ChessModel implements IChess {
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
 
         try {
-            return chessBoard.getPieces(p).getMove().getPieceMoves(p,chessBoard);
+            return chessBoard.getPieces(p).getMove().getPieceMoves(p, chessBoard);
         } catch (OutOfBoardException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return new ArrayList<>();
     }
@@ -90,8 +90,11 @@ public class ChessModel implements IChess {
             this.chessBoard.getPieces(p0).setFirstMoveFalse();
             this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
             this.chessBoard.setPiece(null, p0);
-            if (p1.y == 0 ) {
-                if(this.chessBoard.getPieces(p1).getPieceType() == ChessType.TYP_PAWN && this.chessBoard.getPieces(p1).getPieceColor() == ChessColor.CLR_WHITE) {
+
+            timer.newTour(chessBoard.getPieces(p1).getPieceColor());
+
+            if (p1.y == 0) {
+                if (this.chessBoard.getPieces(p1).getPieceType() == ChessType.TYP_PAWN && this.chessBoard.getPieces(p1).getPieceColor() == ChessColor.CLR_WHITE) {
                     this.chessBoard.getPieces(p1).setPieceType(ChessType.TYP_QUEEN);
                 }
             } else if (p1.y == 7) {
@@ -111,7 +114,7 @@ public class ChessModel implements IChess {
     }
 
     @Override
-    public List<ChessType> getRemovedPieces(ChessColor color){
+    public List<ChessType> getRemovedPieces(ChessColor color) {
         return new ArrayList<>();
     }
 
@@ -122,6 +125,6 @@ public class ChessModel implements IChess {
 
     @Override
     public long getPlayerDuration(ChessColor color, boolean isPlaying) {
-        return 0;
+        return timer.timerFor(color, isPlaying);
     }
 }

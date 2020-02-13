@@ -4,7 +4,7 @@ package fr.rphstudio.chess.interf;
  * Exception class used to contain all the exceptions in our application.
  * @author Romuald GRIGNON
  */
-public class ChessException extends Exception
+public class  ChessException extends Exception
 {
     public ChessException()
     {

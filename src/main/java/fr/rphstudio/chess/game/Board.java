@@ -44,3 +44,4 @@ public class Board {
         chessBoard[pos.y][pos.x] = piece;
     }
 }
+
