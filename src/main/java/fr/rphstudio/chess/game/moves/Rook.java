@@ -10,10 +10,10 @@ import java.util.List;
 public class Rook implements IMove {
 
     /**
-     *
-     * @param position
-     * @param board
-     * @return
+     * Get the possible rook moves
+     * @param position the position of the piece
+     * @param board the chessboard
+     * @return the list of all possibles positions
      */
 
     @Override
@@ -82,10 +82,10 @@ public class Rook implements IMove {
     }
 
     /**
-     *
-     * @param x
-     * @param y
-     * @return
+     * Get the rook position
+     * @param x the x position
+     * @param y the y position
+     * @return the rook position on the chess
      */
 
     private IChess.ChessPosition getPosition(int x, int y) {

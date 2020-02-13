@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Queen implements IMove {
+
     /**
-     *
-     * @param position
-     * @param board
-     * @return
+     * Get the possible queen moves
+     * @param position the position of the piece
+     * @param board the chessboard
+     * @return the list of all possibles positions
      */
 
     @Override
@@ -137,10 +138,10 @@ public class Queen implements IMove {
     }
 
     /**
-     *
-     * @param x
-     * @param y
-     * @return
+     * Get the queen position
+     * @param x the x position
+     * @param y the y position
+     * @return the queen position on the chess
      */
 
     private IChess.ChessPosition getPosition(int x, int y) {
