@@ -12,7 +12,6 @@ public class ChessModel implements IChess {
     private static ChessModel instance;
     private Board chessBoard = new Board();
     private LostPiece lostPiece;
-    //private ArrayList<LastMove> lastMovesList;
     private boolean isTestPositionsPossible;
     private LastMove lastMove;
     private static Timer timer = new Timer();
@@ -34,7 +33,11 @@ public class ChessModel implements IChess {
 
         chessBoard = new Board();
         lostPiece = new LostPiece();
-        this.lastMove=null;
+
+        this.lastMoveslist = new ArrayList<LastMove>();
+        this.timer = new Timer();
+
+
     }
 
     @Override
@@ -104,6 +107,7 @@ public class ChessModel implements IChess {
         } catch (OutOfBoardException | NullPointerException e) {
             e.printStackTrace();
         }
+
         return positionPossibleSafe;
     }
 
@@ -111,19 +115,19 @@ public class ChessModel implements IChess {
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
         Piece removePiece;
-
         try {
 
             if (this.chessBoard.getPieces(p0).getPieceType() == ChessType.TYP_KING && (this.chessBoard.getPieces(p0).getCounterMove() == 0 && this.chessBoard.getPieces(new ChessPosition(0, p0.y)).getCounterMove() == 0 ||  this.chessBoard.getPieces(p0).getCounterMove() == 0 && this.chessBoard.getPieces(new ChessPosition(7, p0.y)).getCounterMove() == 0)  && (p1.x == 1 || p1.x == 6)) {
                 if (p1.x == 1) {
-                    this.lastMoveslist.add( new LastMove(chessBoard.getPieces(p0), p0, p1, chessBoard.getPieces(new ChessPosition(0, p0.y)), (new ChessPosition(0, p0.y)), new ChessPosition(2, p0.y)));
+                    this.lastMoveslist.add( new LastMove(chessBoard.getPieces(p0), p0, p1, chessBoard.getPieces(new ChessPosition(0, p0.y)), (new ChessPosition(0, p0.y)), new ChessPosition(2, p0.y), this.timer.getTimerBlack(), this.timer.getTimerWhite()));
+
                     this.chessBoard.getPieces(p0).setCounterMove(1);
                     this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
                     this.chessBoard.setPiece(null, p0);
                     this.chessBoard.setPiece(this.chessBoard.getPieces((new ChessPosition(0, p0.y))), (new ChessPosition(2, p0.y)));
                     this.chessBoard.setPiece(null, (new ChessPosition(0, p0.y)));
                 } else if (p1.x == 6) {
-                    this.lastMoveslist.add(new LastMove(chessBoard.getPieces(p0), p0, p1, chessBoard.getPieces(new ChessPosition(7, p0.y)), new ChessPosition(7, p0.y), (new ChessPosition(5, p0.y))));
+                    this.lastMoveslist.add(new LastMove(chessBoard.getPieces(p0), p0, p1, chessBoard.getPieces(new ChessPosition(7, p0.y)), new ChessPosition(7, p0.y), (new ChessPosition(5, p0.y)), this.timer.getTimerBlack(), this.timer.getTimerWhite()));
                     this.chessBoard.getPieces(p0).setCounterMove(1);
                     this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
                     this.chessBoard.setPiece(null, p0);
@@ -131,13 +135,12 @@ public class ChessModel implements IChess {
                     this.chessBoard.setPiece(null, (new ChessPosition(7, p0.y)));
                 }
             } else {
-
-                LastMove mouvement = new LastMove(chessBoard.getPieces(p0), p0, p1, chessBoard.getPieces(p1), p1, null);
+                timer.newTour(chessBoard.getPieces(p0).getPieceColor());
+                LastMove mouvement = new LastMove(chessBoard.getPieces(p0), p0, p1, chessBoard.getPieces(p1), p1, null, this.timer.getTimerBlack(), this.timer.getTimerWhite());
                 removePiece = this.chessBoard.getPieces(p1);
                 this.chessBoard.getPieces(p0).setCounterMove(1);
                 this.chessBoard.setPiece(this.chessBoard.getPieces(p0), p1);
                 this.chessBoard.setPiece(null, p0);
-                timer.newTour(chessBoard.getPieces(p1).getPieceColor());
                 if (removePiece != null && !isTestPositionsPossible) {
                     lostPiece.addType(removePiece.getPieceType(), removePiece.getPieceColor());
                     mouvement.setPieceEaten(true);
@@ -197,7 +200,7 @@ public class ChessModel implements IChess {
     public boolean undoLastMove() {
 
         if (this.lastMoveslist != null ){
-            System.out.println(this.lastMoveslist.size());
+
             if(this.lastMoveslist.size()>0){
 
                 LastMove lastOne = this.lastMoveslist.get(this.lastMoveslist.size()-1);
@@ -207,6 +210,8 @@ public class ChessModel implements IChess {
                 chessBoard.setPiece(lastOne.getPiece2(), lastOne.getPosition1P2());
                 try {
                     this.chessBoard.getPieces(lastOne.getPosition1P1()).setCounterMove(-1);
+                    this.timer.setTimerBlack(lastOne.getTimeBlack());
+                    this.timer.setTimerWhite(lastOne.getTimeWhite());
                 } catch (OutOfBoardException | NullPointerException e) {
                     e.printStackTrace();
                 }
@@ -234,6 +239,6 @@ public class ChessModel implements IChess {
 
     @Override
     public long getPlayerDuration(ChessColor color, boolean isPlaying) {
-        return timer.timerFor(color, isPlaying);
+        return this.timer.timerFor(color, isPlaying);
     }
 }

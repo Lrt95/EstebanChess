@@ -3,9 +3,10 @@ package fr.rphstudio.chess.game;
 import fr.rphstudio.chess.interf.IChess;
 
 public class Timer {
-    long timerBlack = 0;
-    long timerWhite = 0;
-    long timeStart = System.currentTimeMillis();
+    private long timerBlack = 0;
+    private long timerWhite = 0;
+    private long timeStart = System.currentTimeMillis();
+
 
 
     public long getCurrentTime() {
@@ -44,14 +45,20 @@ public class Timer {
         StartNewTime();
     }
 
+    public long getTimerBlack() {
+        return timerBlack;
+    }
 
-    // getCurrentTime retourne currentTime millis moins timestart
+    public void setTimerBlack(long timerBlack) {
+        this.timerBlack = timerBlack;
+    }
 
+    public long getTimerWhite() {
+        return timerWhite;
+    }
 
-    // getplayerTime (retourne timerB ou W  + getcurrenttime (si playing)
-
-
-    // startnewturn (color ) : ajoute à timeW/B le current time et remet le starttime avec currenttimemillis
-
+    public void setTimerWhite(long timerWhite) {
+        this.timerWhite = timerWhite;
+    }
 
 }
