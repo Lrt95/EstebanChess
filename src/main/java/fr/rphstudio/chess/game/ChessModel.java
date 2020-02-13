@@ -135,9 +135,9 @@ public class ChessModel implements IChess {
     }
 
     /**
-     *
+     * Get the moves of the piece when the king state is check
      * @param p the king position
-     * @return
+     * @return the list of possible positions
      */
 
     public List<ChessPosition> getPieceMovesCheckKingState(ChessPosition p) {
@@ -154,7 +154,7 @@ public class ChessModel implements IChess {
     }
 
     /**
-     * The
+     * Moves the piece
      * @param p0 source position on the board.
      * @param p1 destination position on the board.
      */
