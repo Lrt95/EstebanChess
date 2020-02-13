@@ -19,7 +19,7 @@ public class ChessModel implements IChess {
 
     /**
      * Instance a new Chess
-     * @return
+     * @return instance of chess model
      */
 
     public static IChess getInstance() {
@@ -42,11 +42,11 @@ public class ChessModel implements IChess {
     }
 
     /**
-     *
+     * Get the piece type on the chessboard
      * @param p x/y position on the board where we want to get the piece type.
-     * @return
-     * @throws EmptyCellException
-     * @throws OutOfBoardException
+     * @return the type piece on the chessboard
+     * @throws EmptyCellException when the cell is empty
+     * @throws OutOfBoardException when no pieces on the board
      */
 
     @Override
@@ -60,11 +60,11 @@ public class ChessModel implements IChess {
     }
 
     /**
-     *
+     * Get the piece color on the chessboard
      * @param p x/y position on the board where we want to get the piece color.
-     * @return
-     * @throws EmptyCellException
-     * @throws OutOfBoardException
+     * @return the color piece on the chessboard
+     * @throws EmptyCellException when the cell is empty
+     * @throws OutOfBoardException when no pieces on the board
      */
 
     @Override
@@ -78,9 +78,9 @@ public class ChessModel implements IChess {
     }
 
     /**
-     *
+     * Get the number of remaining pieces
      * @param color the requested color of the pieces to count.
-     * @return
+     * @return the number of piece color
      */
 
     @Override
@@ -105,9 +105,9 @@ public class ChessModel implements IChess {
     }
 
     /**
-     *
+     * List of all possibles positions for a piece
      * @param p requested piece position.
-     * @return
+     * @return the list of all possibles position
      */
 
     @Override
@@ -136,7 +136,7 @@ public class ChessModel implements IChess {
 
     /**
      *
-     * @param p
+     * @param p the king position
      * @return
      */
 
@@ -154,7 +154,7 @@ public class ChessModel implements IChess {
     }
 
     /**
-     *
+     * The
      * @param p0 source position on the board.
      * @param p1 destination position on the board.
      */
@@ -202,7 +202,7 @@ public class ChessModel implements IChess {
     }
 
     /**
-     *
+     * Get the state of king
      * @param color the requested king color.
      * @return
      */
@@ -237,7 +237,7 @@ public class ChessModel implements IChess {
     }
 
     /**
-     *
+     * Get the state of king for move
      * @param color
      * @return
      */
@@ -271,9 +271,9 @@ public class ChessModel implements IChess {
     }
 
     /**
-     *
+     * Get all pieces lost during the game
      * @param color color of the removed pieces
-     * @return
+     * @return the list of pieces lost by color
      */
 
     @Override
@@ -283,8 +283,8 @@ public class ChessModel implements IChess {
     }
 
     /**
-     *
-     * @return
+     * Undo the last move
+     * @return boolean
      */
 
     @Override
@@ -300,7 +300,7 @@ public class ChessModel implements IChess {
     }
 
     /**
-     *
+     * Timer for players
      * @param color The color of the player from whom we want to get the current duration.
      * @param isPlaying Indicates if the player color is the one currently playing.
      * @return
@@ -308,6 +308,7 @@ public class ChessModel implements IChess {
 
     @Override
     public long getPlayerDuration(ChessColor color, boolean isPlaying) {
+
         return 0;
     }
 }
