@@ -8,12 +8,14 @@ public class LastMove {
     private IChess.ChessPosition position2;
     private Piece piece1;
     private Piece piece2;
+    private boolean isPieceEaten;
 
     public LastMove(IChess.ChessPosition position1, IChess.ChessPosition getPosition2, Piece piece1, Piece piece2) {
         this.position1 = position1;
         this.position2 = getPosition2;
         this.piece1 = piece1;
         this.piece2 = piece2;
+        this.isPieceEaten = false;
     }
 
     public IChess.ChessPosition getPosition1() {
@@ -46,5 +48,13 @@ public class LastMove {
 
     public void setPiece2(Piece piece2) {
         this.piece2 = piece2;
+    }
+
+    public boolean isPieceEaten() {
+        return isPieceEaten;
+    }
+
+    public void setPieceEaten(boolean pieceEaten) {
+        isPieceEaten = pieceEaten;
     }
 }
