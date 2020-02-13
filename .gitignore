@@ -12,3 +12,4 @@ music/*
 sfx/*
 _tmp_/*
 src/main/doc/*.~*
+.DS_Store

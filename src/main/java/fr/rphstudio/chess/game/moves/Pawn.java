@@ -13,57 +13,39 @@ public class Pawn implements IMove  {
     @Override
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition position, Board board) {
 
-        IChess.ChessPosition p = new IChess.ChessPosition();
-        p.x = position.x; p.y = position.y;
-        IChess.ChessPosition destinationFinalWhite = new IChess.ChessPosition();
-        destinationFinalWhite.x = position.x; destinationFinalWhite.y = position.y-2;
-        IChess.ChessPosition destinationFinalBlack = new IChess.ChessPosition();
-        destinationFinalBlack.x = position.x; destinationFinalBlack.y = position.y+2;
         ArrayList<IChess.ChessPosition> positionPossible = new ArrayList();
-
+        int dY;
 
         try {
-            if (board.getPieces(p).getPieceColor() == IChess.ChessColor.CLR_WHITE) {
-                p.y = p.y-1;
+           if(board.getPieces(position).getPieceColor() == IChess.ChessColor.CLR_WHITE) {
+               dY = -1;
+           } else {
+               dY = 1;
+           }
 
-                if (board.getPieces(p)== null){
-                    positionPossible.add(new IChess.ChessPosition(position.x, position.y - 1));
-                    if (position.y == IChess.BOARD_POS_Y_WHITE_PAWNS && board.getPieces(destinationFinalWhite) == null) {
-                        positionPossible.add(new IChess.ChessPosition(position.x, position.y - 2));
+            for (int pX = Math.max(position.x-1, 0) ; pX <= Math.min(position.x+1, 7); pX++) {
+                IChess.ChessPosition pCheck = new IChess.ChessPosition(pX, position.y+dY);
+                if (Math.abs(pX-position.x) == 0 && board.getPieces(pCheck) == null) {
+                positionPossible.add(pCheck);
+                IChess.ChessPosition pFirstMove = new IChess.ChessPosition(position.x, position.y + dY * 2);
+                if(board.getPieces(position).getCounterMove() == 0){
+                    if(board.getPieces(pFirstMove) == null) {
+                        positionPossible.add(pFirstMove);
                     }
-
                 }
-                if (board.getPieces(getPosition(position.x+1, position.y-1)).getPieceColor() == IChess.ChessColor.CLR_BLACK) {
-                    positionPossible.add(new IChess.ChessPosition(position.x+1, position.y - 1));
-                }
-                if (board.getPieces(getPosition(position.x-1, position.y-1)).getPieceColor() == IChess.ChessColor.CLR_BLACK) {
-                    positionPossible.add(new IChess.ChessPosition(position.x-1, position.y - 1));
+            }
+            else if(Math.abs(pX-position.x) == 1) {
+                if (board.getPieces(pCheck) != null) {
+                    if(board.getPieces(pCheck).getPieceColor() != board.getPieces(position).getPieceColor()) {
+                        positionPossible.add(pCheck);
+                    }
                 }
 
             }
-            else if  (board.getPieces(p).getPieceColor() == IChess.ChessColor.CLR_BLACK) {
-                p.y = p.y+1;
+        }
 
-
-                if (board.getPieces(p)== null) {
-                    if (position.y == IChess.BOARD_POS_Y_BLACK_PAWNS && board.getPieces(destinationFinalBlack) == null) {
-                        positionPossible.add(new IChess.ChessPosition(position.x, position.y + 2));
-
-                    }
-                    positionPossible.add(new IChess.ChessPosition(position.x, position.y + 1));
-                }
-                if (board.getPieces(getPosition(position.x+1, position.y+1)).getPieceColor() == IChess.ChessColor.CLR_WHITE) {
-                    positionPossible.add(new IChess.ChessPosition(position.x+1, position.y + 1));
-                }
-                 if (board.getPieces(getPosition(position.x-1, position.y+1)).getPieceColor() == IChess.ChessColor.CLR_WHITE) {
-                    positionPossible.add(new IChess.ChessPosition(position.x-1, position.y + 1));
-
-                }
-
-                }
-
-        } catch (OutOfBoardException e) {
-            e.printStackTrace();
+        } catch (OutOfBoardException | NullPointerException e) {
+            //e.printStackTrace();
         }
 
         return positionPossible;
