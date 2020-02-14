@@ -7,6 +7,9 @@ public class Board {
 
     private Piece[][] chessBoard = new Piece[8][8];
 
+    /**
+     * Initiates the chessboard
+     */
     public Board() {
 
         for (int i=0; i<8; i++){
@@ -33,6 +36,13 @@ public class Board {
         chessBoard[IChess.BOARD_POS_Y_BLACK_PIECES][IChess.BOARD_POS_X_QUEENSIDE_ROOK]=(new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_ROOK));
     }
 
+    /**
+     * Get the position of the piece on the chessboard
+     * @param p the chess piece position
+     * @return the position of the piece on the chessboard
+     * @throws OutOfBoardException if the piece is not on the board
+     */
+
     public Piece getPieces(IChess.ChessPosition p) throws OutOfBoardException {
         if (p.y<0 || p.y>7 || p.x<0 || p.x>7 ) {
             throw new OutOfBoardException();
@@ -40,6 +50,11 @@ public class Board {
         return chessBoard[p.y][p.x];
     }
 
+    /**
+     * Get the position of King
+     * @param color of king
+     * @return the position of King
+     */
     public IChess.ChessPosition getKingPosition(IChess.ChessColor color){
         IChess.ChessPosition kingPosition = new IChess.ChessPosition();
         for(int x = 0; x < 8; x++) {
@@ -53,6 +68,11 @@ public class Board {
             return kingPosition;
     }
 
+    /**
+     * Set pieces on the board
+     * @param piece the type of piece
+     * @param pos the position on the chessboard
+     */
     public void setPiece(Piece piece, IChess.ChessPosition pos) {
         if(pos != null){
             if(pos.x >= 0 && pos.x <= 7 && pos.y >= 0 && pos.y <= 7 ) {

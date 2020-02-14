@@ -9,6 +9,12 @@ import java.util.List;
 
 public class Pawn implements IMove  {
 
+    /**
+     * Get the possible pawn moves
+     * @param position the position of the piece
+     * @param board the chessboard
+     * @return the list of all possibles positions
+     */
 
     @Override
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition position, Board board) {
@@ -50,6 +56,14 @@ public class Pawn implements IMove  {
 
         return positionPossible;
     }
+
+    /**
+     * Get the pawn position
+     * @param x the x position
+     * @param y the y position
+     * @return the pawn position on the chess
+     */
+
         private IChess.ChessPosition getPosition(int x, int y) {
             return  new IChess.ChessPosition(x, y);
     }

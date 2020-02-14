@@ -8,15 +8,28 @@ public class Timer {
     private long timeStart = System.currentTimeMillis();
 
 
-
+    /**
+     *
+     * @return the current time
+     */
     public long getCurrentTime() {
         return System.currentTimeMillis() - timeStart;
     }
 
+    /**
+     * Start a new timer
+     */
     public void StartNewTime() {
         timeStart = System.currentTimeMillis();
     }
 
+
+    /**
+     *
+     * @param color color of piece
+     * @param isPlaying state of round
+     * @return the time for the color
+     */
     public long timerFor(IChess.ChessColor color, boolean isPlaying) {
         long time = 0;
 
@@ -32,6 +45,10 @@ public class Timer {
         return time;
     }
 
+    /**
+     * Add time for new round
+     * @param color color of piece
+     */
     public void newTour(IChess.ChessColor color) {
         switch (color) {
             case CLR_WHITE:
@@ -45,18 +62,34 @@ public class Timer {
         StartNewTime();
     }
 
+    /**
+     *
+     * @return the actual time for black
+     */
     public long getTimerBlack() {
         return timerBlack;
     }
 
+    /**
+     *
+     * @param timerBlack set time for black
+     */
     public void setTimerBlack(long timerBlack) {
         this.timerBlack = timerBlack;
     }
 
+    /**
+     *
+     * @return the actual time for white
+     */
     public long getTimerWhite() {
         return timerWhite;
     }
 
+    /**
+     *
+     * @param timerWhite set the time for white
+     */
     public void setTimerWhite(long timerWhite) {
         this.timerWhite = timerWhite;
     }
