@@ -54,8 +54,10 @@ public class Board {
     }
 
     public void setPiece(Piece piece, IChess.ChessPosition pos) {
-        if(pos.x >= 0 && pos.x <= 7 && pos.y >= 0 && pos.y <= 7 ) {
-            chessBoard[pos.y][pos.x] = piece;
+        if(pos != null){
+            if(pos.x >= 0 && pos.x <= 7 && pos.y >= 0 && pos.y <= 7 ) {
+                chessBoard[pos.y][pos.x] = piece;
+            }
         }
     }
 }
