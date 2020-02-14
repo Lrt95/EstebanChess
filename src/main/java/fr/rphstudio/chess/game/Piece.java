@@ -38,14 +38,6 @@ public class Piece {
         return this.pieceType;
     }
 
-    public void setPieceColor(IChess.ChessColor pieceColor) {
-        this.pieceColor = pieceColor;
-    }
-
-    public void setPieceType(IChess.ChessType pieceType) {
-        this.pieceType = pieceType;
-    }
-
     public int getCounterMove() {
         return counterMove;
     }
