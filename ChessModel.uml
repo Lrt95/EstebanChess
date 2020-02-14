@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>fr.rphstudio.chess.game.ChessModel</OriginalElement>
+  <nodes>
+    <node x="892.0" y="1254.0">fr.rphstudio.chess.game.moves.Rook</node>
+    <node x="131.0" y="772.0">fr.rphstudio.chess.interf.IChess.ChessPosition</node>
+    <node x="0.0" y="1374.0">fr.rphstudio.chess.game.Board</node>
+    <node x="371.0" y="1374.0">fr.rphstudio.chess.game.LostPiece</node>
+    <node x="0.0" y="1254.0">fr.rphstudio.chess.game.moves.Bishop</node>
+    <node x="1784.0" y="1254.0">fr.rphstudio.chess.game.moves.Pawn</node>
+    <node x="1338.0" y="1254.0">fr.rphstudio.chess.game.moves.Queen</node>
+    <node x="396.0" y="825.0">fr.rphstudio.chess.interf.IChess.ChessKingState</node>
+    <node x="2219.0" y="0.0">fr.rphstudio.chess.game.Piece</node>
+    <node x="562.0" y="825.0">fr.rphstudio.chess.interf.IChess.ChessColor</node>
+    <node x="0.0" y="781.0">fr.rphstudio.chess.interf.IChess.ChessType</node>
+    <node x="1896.0" y="0.0">fr.rphstudio.chess.game.Timer</node>
+    <node x="278.5" y="0.0">fr.rphstudio.chess.interf.IChess</node>
+    <node x="1126.0" y="0.0">fr.rphstudio.chess.game.LastMove</node>
+    <node x="446.0" y="1254.0">fr.rphstudio.chess.game.moves.King</node>
+    <node x="1115.0" y="1141.0">fr.rphstudio.chess.game.moves.IMove</node>
+    <node x="700.0" y="629.0">fr.rphstudio.chess.game.ChessModel</node>
+    <node x="2230.0" y="1254.0">fr.rphstudio.chess.game.moves.Knight</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="fr.rphstudio.chess.game.moves.Queen" target="fr.rphstudio.chess.game.moves.IMove">
+      <point x="0.0" y="-37.5" />
+      <point x="1551.0" y="1234.0" />
+      <point x="1363.5" y="1234.0" />
+      <point x="35.5" y="26.5" />
+    </edge>
+    <edge source="fr.rphstudio.chess.game.moves.Rook" target="fr.rphstudio.chess.game.moves.IMove">
+      <point x="0.0" y="-37.5" />
+      <point x="1105.0" y="1234.0" />
+      <point x="1292.5" y="1234.0" />
+      <point x="-35.5" y="26.5" />
+    </edge>
+    <edge source="fr.rphstudio.chess.game.moves.Bishop" target="fr.rphstudio.chess.game.moves.IMove">
+      <point x="0.0" y="-37.5" />
+      <point x="213.0" y="1214.0" />
+      <point x="1150.5" y="1214.0" />
+      <point x="-177.5" y="26.5" />
+    </edge>
+    <edge source="fr.rphstudio.chess.interf.IChess.ChessColor" target="fr.rphstudio.chess.interf.IChess">
+      <point x="0.0" y="-37.5" />
+      <point x="621.0" y="609.0" />
+      <point x="545.1999999999999" y="609.0" />
+      <point x="76.19999999999993" y="289.5" />
+    </edge>
+    <edge source="fr.rphstudio.chess.interf.IChess.ChessType" target="fr.rphstudio.chess.interf.IChess">
+      <point x="0.0" y="-81.5" />
+      <point x="55.5" y="599.0" />
+      <point x="316.6" y="599.0" />
+      <point x="-152.39999999999998" y="289.5" />
+    </edge>
+    <edge source="fr.rphstudio.chess.game.moves.Knight" target="fr.rphstudio.chess.game.moves.IMove">
+      <point x="0.0" y="-37.5" />
+      <point x="2443.0" y="1214.0" />
+      <point x="1505.5" y="1214.0" />
+      <point x="177.5" y="26.5" />
+    </edge>
+    <edge source="fr.rphstudio.chess.game.moves.Pawn" target="fr.rphstudio.chess.game.moves.IMove">
+      <point x="0.0" y="-37.5" />
+      <point x="1997.0" y="1224.0" />
+      <point x="1434.5" y="1224.0" />
+      <point x="106.5" y="26.5" />
+    </edge>
+    <edge source="fr.rphstudio.chess.interf.IChess.ChessKingState" target="fr.rphstudio.chess.interf.IChess">
+      <point x="0.0" y="-37.5" />
+      <point x="0.0" y="289.5" />
+    </edge>
+    <edge source="fr.rphstudio.chess.interf.IChess.ChessPosition" target="fr.rphstudio.chess.interf.IChess">
+      <point x="0.0" y="-90.5" />
+      <point x="253.5" y="609.0" />
+      <point x="392.79999999999995" y="609.0" />
+      <point x="-76.20000000000005" y="289.5" />
+    </edge>
+    <edge source="fr.rphstudio.chess.game.moves.King" target="fr.rphstudio.chess.game.moves.IMove">
+      <point x="0.0" y="-37.5" />
+      <point x="659.0" y="1224.0" />
+      <point x="1221.5" y="1224.0" />
+      <point x="-106.5" y="26.5" />
+    </edge>
+    <edge source="fr.rphstudio.chess.game.ChessModel" target="fr.rphstudio.chess.interf.IChess">
+      <point x="0.0" y="-233.5" />
+      <point x="890.5" y="599.0" />
+      <point x="621.3999999999999" y="599.0" />
+      <point x="152.39999999999986" y="289.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4632605292100862" x="1351.445397539199" y="737.6792679489158" />
+  <SelectedNodes>
+    <node>fr.rphstudio.chess.game.Board</node>
+    <node>fr.rphstudio.chess.game.LostPiece</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
